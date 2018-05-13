@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html ng-app="app">
+<head>
+<meta charset="utf-8">
+  <title>Angular version | Angulr</title>
+  <meta name="description" content="Angularjs, Html5, Music, Landing, 4 in 1 ui kits package" />
+  <meta name="keywords" content="AngularJS, angular, bootstrap, admin, dashboard, panel, app, charts, components,flat, responsive, layout, kit, ui, route, web, app, widgets" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+  <link rel="stylesheet" href="../libs/jquery/bootstrap/dist/css/bootstrap.css" type="text/css" />
+  <link rel="stylesheet" href="../libs/assets/font-awesome/css/font-awesome.min.css" type="text/css" />
+  <link rel="stylesheet" href="../libs/assets/simple-line-icons/css/simple-line-icons.css" type="text/css" />
+  <!-- jQuery -->
+  <script src="../libs/jquery/jquery/dist/jquery.js"></script>
+  
+  <!-- build:css css/app.min.css -->
+  <link rel="stylesheet" href="css/font.css" type="text/css" />
+  <link rel="stylesheet" href="css/app.css" type="text/css" />
+   <link rel="stylesheet" href="css/Longin.css" type="text/css" />
+   <link rel="stylesheet" href="../libs/angular/angularjs-toaster/toaster.css"> 
+  <!-- endbuild -->
+</head>
+<!-- build:js js/app.angular.js -->
+
+
+  <!-- Angular -->
+  <script src="../libs/angular/angular/angular.js"></script>
+  <script src="../libs/angular/angularjs-toaster/toaster.js"></script>
+  
+
+
+  <!-- App -->
+  <script src="js/loginApp.js"></script>
+  <script src="js/controllers/signin.js"></script>
+  <!-- endbuild -->
+  <!-- Lazy loading -->
+</head>
+<body>
+
+<div class="container w-xxl w-auto-xs" ng-controller="SigninFormController" ng-init="app.settings.container = false;">
+   <toaster-container toaster-options="{'position-class': 'toast-top-right', 'close-button':true}"></toaster-container>
+	<p class="navbar-brand block m-t">Welcome to the JSJXY</p>
+  <div class="m-b-lg">
+  <script type="text/javascript">
+	function change(){
+		$("#image").attr('src',"/angular/image?"+new Date().getTime())
+	}
+</script>
+    <div class="wrapper text-center">
+      <img src="img/{{value}}.jpg" class="img-circle">
+    </div>
+    <form name="form" class="">
+      <div class="list-group list-group-sm">
+        <div class="list-group-item" >
+             <select class="form-control" ng-model="user.rose" ng-change="changeimage()" required>
+                <option>Admin</option>
+                <option>Teacher</option>
+                <option>Student</option>
+              </select>
+        </div>
+        <div class="list-group-item">
+          <input type="text" name="username" class="form-control no-border " placeholder="UserName" ng-model="user.name" required >
+        </div>
+        <div class="list-group-item text-danger" ng-if='form.username.$invalid && form.username.$touched'>
+        <i class="fa fa-exclamation-triangle "></i> username is null
+        </div>
+        <div class="list-group-item">
+           <input type="password" name="password" placeholder="Password" class="form-control no-border" ng-model="user.password" required>
+        </div>
+        <div class="list-group-item text-danger" ng-if='form.password.$invalid && form.password.$touched'>
+        <i class="fa fa-exclamation-circle "></i> password is null   
+        </div>
+        <div class="list-group-item " style="overflow:hidden">
+        	<div class=" col-sm-6">
+        		<input type="text" name="code" placeholder="verification code" class="form-control no-border " ng-minlength="4" ng-maxlength="4" ng-model="user.code" required >   
+        	</div>
+       		<div class=" col-sm-6">
+           		<img src="/angular/image" id="image" class="img-responsive img-rounded thumbnail" style="cursor:pointer;" onclick="change();"/>   
+			</div>
+        </div>
+        
+		<div class="list-group-item text-danger " ng-if='form.code.$invalid && form.code.$touched'>
+        <i class="fa fa-exclamation "></i> code is false
+        </div>
+      </div>
+      <button type="submit" class="btn  btn-lg btn-primary btn-block" ng-disabled="form.$invalid" ng-click="Login()">Log in</button>
+    </form>
+  </div>
+  
+</div>
+</body>
+</html>
